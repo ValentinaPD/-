@@ -10,11 +10,11 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-            int q = GetPrimeNumber();
-            int p = GetPrimeNumber(q);
+            int q = 3;
+            int p = 11;
             int n = q * p;
             int fn = (p - 1) * (q - 1);
-            int d =GetD(fn, n);
+            int d = GetD(fn, n);
             int e = GetE(d, fn);
             Console.WriteLine(q+" "+p+" "+fn+" "+d+" "+e);
             
@@ -29,17 +29,19 @@ namespace ConsoleApplication1
         static string encrypt(long n,long e,string s)
         {
             string s2 = "";
-            for (int i = 0; i < s.Length; i++)
-            {
-                double temp = (Math.Pow(GetNumberSymbol(s[i]), e)) % n;
-                s2 += " " + temp;
-                Console.WriteLine("Enckrypt"+temp);
+             for (int i = 0; i < s.Length; i++)
+             {
+                 double temp = (Math.Pow(GetNumberSymbol(s[i]), e)) % n;
+                 s2 += " " + temp;
+                 Console.WriteLine("Enckrypt"+temp);
 
-            }
-            return s2;
+             }
+             return s2;
+           
         }
         static string Decrypt(long n, long d,string s)
         {
+           
             string s2 = "";
             string[] s3 = s.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
             for (int i = 0; i < s3.Length; i++)
@@ -52,7 +54,7 @@ namespace ConsoleApplication1
         }
         static int GetD(int fn, int n)
         {
-
+            
             int d;
             for ( d= 2; d <= fn; d++)
                 if ((MutuallySimple(d, fn)) && (d%2!=0) && (SearchK(d,fn)==true)) //если имеют общие делители
@@ -62,6 +64,7 @@ namespace ConsoleApplication1
                 }
             
             return d;
+           
         }
         public static bool SearchK(int d,int fn)
         {
@@ -89,11 +92,8 @@ namespace ConsoleApplication1
             }
             e = (i * fn + 1) / d;
             return e;
-            //for(e=2;e< fn; e++)
-            //{
-            //    if (((e * d) % fn == 1)) break;
-            //}
-            //return e;
+           
+
 
            
         }
